@@ -38,6 +38,71 @@ const malla = [
       { "nombre": "Fisiología animal", "codigo": "CVE421", "prer": ["CVE292", "CQU310"] },
       { "nombre": "Enfermedades parasitarias", "codigo": "CVE425", "prer": ["CVE211"] }
     ]
+  },
+  {
+    "nombre": "5° Semestre",
+    "ramos": [
+      { "nombre": "Etología y bienestar animal", "codigo": "CVE502", "prer": ["CVE211"] },
+      { "nombre": "Inmunología", "codigo": "CVE523", "prer": ["CBI329"] },
+      { "nombre": "Reproducción e inseminación artificial", "codigo": "CVE543", "prer": ["CVE421"] },
+      { "nombre": "Nutrición y alimentación animal", "codigo": "CVE544", "prer": ["CQU310"] },
+      { "nombre": "Tecnología de los alimentos", "codigo": "CVE551", "prer": ["CBI329"] },
+      { "nombre": "Fisiopatología", "codigo": "CVE591", "prer": ["CVE421"] }
+    ]
+  },
+  {
+    "nombre": "6° Semestre",
+    "ramos": [
+      { "nombre": "Farmacología y toxicología", "codigo": "CVE631", "prer": ["CVE421"] },
+      { "nombre": "Enfermedades infecciosas", "codigo": "CVE633", "prer": ["CVE523"] },
+      { "nombre": "Producción avícola", "codigo": "CVE642", "prer": ["CVE544", "CVE502"] },
+      { "nombre": "Control de calidad de los alimentos", "codigo": "CVE651", "prer": ["CVE425", "CVE551"] },
+      { "nombre": "Patología de sistemas", "codigo": "CVE692", "prer": ["CVE591"] },
+      { "nombre": "Obstetricia y ginecología", "codigo": "CVE833", "prer": ["CVE543"] }
+    ]
+  },
+  {
+    "nombre": "7° Semestre",
+    "ramos": [
+      { "nombre": "Práctica intermedia", "codigo": "CVE701", "prer": ["CVE631", "CVE633"] },
+      { "nombre": "Semiología", "codigo": "CVE732", "prer": ["CVE631", "CVE591", "CVE312"] },
+      { "nombre": "Producción de ovinos y caprinos", "codigo": "CVE742", "prer": ["CVE543", "CBI514"] },
+      { "nombre": "Producción porcina", "codigo": "CVE744", "prer": ["CBI514", "CVE3317"] },
+      { "nombre": "Epidemiología veterinaria", "codigo": "CVE752", "prer": ["CVE633"] },
+      { "nombre": "Laboratorio clínico", "codigo": "CVE792", "prer": ["CVE692"] }
+    ]
+  },
+  {
+    "nombre": "8° Semestre",
+    "ramos": [
+      { "nombre": "Medicina de felinos y exóticos", "codigo": "CVE801", "prer": ["CVE792", "CVE732"] },
+      { "nombre": "Medicina de animales mayores", "codigo": "CVE831", "prer": ["CVE792", "CVE732"] },
+      { "nombre": "Diagnóstico por imágenes", "codigo": "CVE834", "prer": ["CVE692"] },
+      { "nombre": "Cirugía general", "codigo": "CVE835", "prer": ["CVE732"] },
+      { "nombre": "Medicina de caninos", "codigo": "CVE892", "prer": ["CVE792", "CVE732"] }
+    ]
+  },
+  {
+    "nombre": "9° Semestre",
+    "ramos": [
+      { "nombre": "Finanzas y evaluación de proyectos", "codigo": "AEA107", "prer": ["AEA240"] },
+      { "nombre": "Producción acuícola", "codigo": "CVE042", "prer": ["CVE544"] },
+      { "nombre": "Electivo de especialidad", "codigo": "CVE821", "prer": ["CVE591"] },
+      { "nombre": "Práctica final", "codigo": "CVE911", "prer": ["CVE701", "CVE831", "CVE892", "CVE801"] },
+      { "nombre": "Farmacología aplicada", "codigo": "CVE935", "prer": ["CVE831", "CVE835"] },
+      { "nombre": "Patología quirúrgica", "codigo": "CVE936", "prer": ["CVE835", "CVE892"] },
+      { "nombre": "Producción de bovinos carne y leche", "codigo": "CVE995", "prer": ["CVE833"] }
+    ]
+  },
+  {
+    "nombre": "10° Semestre",
+    "ramos": [
+      { "nombre": "Seminario de integración profesional", "codigo": "CVE033", "prer": ["CVE935"] },
+      { "nombre": "Salud pública", "codigo": "CVE051", "prer": ["CVE651", "CVE752"] },
+      { "nombre": "Trabajo de titulación", "codigo": "CVE090", "prer": ["CVE831", "CVE892", "CVE801"] },
+      { "nombre": "Clínica de animales mayores", "codigo": "CVE933", "prer": ["CVE831", "CVE834"] },
+      { "nombre": "Clínica de animales menores", "codigo": "CVE934", "prer": ["CVE834", "CVE892", "CVE801"] }
+    ]
   }
 ];
 

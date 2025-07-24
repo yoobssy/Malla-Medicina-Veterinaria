@@ -1,54 +1,80 @@
-body {
-    background-color: #ffeef3;
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 20px;
-    color: #333;
+const malla = [
+  {
+    "nombre": "1° Semestre",
+    "ramos": [
+      { "nombre": "Biología celular", "codigo": "CBI111" },
+      { "nombre": "Química", "codigo": "CQU110" },
+      { "nombre": "Introducción a la MV", "codigo": "CVE121" },
+      { "nombre": "Matemática general", "codigo": "MAT100" },
+      { "nombre": "Taller de comunicación oral y escrita", "codigo": "EDU107" }
+    ]
+  },
+  {
+    "nombre": "2° Semestre",
+    "ramos": [
+      { "nombre": "Bioestadística", "codigo": "AES519", "prer": ["MAT100"] },
+      { "nombre": "Bioquímica", "codigo": "CQU310", "prer": ["CQU110"] },
+      { "nombre": "Histoembriología", "codigo": "CVE221" },
+      { "nombre": "Anatomía del canino", "codigo": "CVE292" },
+      { "nombre": "Inglés I", "codigo": "LCE001" }
+    ]
+  },
+  {
+    "nombre": "3° Semestre",
+    "ramos": [
+      { "nombre": "Zoología", "codigo": "CVE211", "prer": ["CBI111"] },
+      { "nombre": "Práctica básica", "codigo": "CVE300", "prer": ["CVE121", "CVE292"] },
+      { "nombre": "Anatomía comparada", "codigo": "CVE312", "prer": ["CVE292"] },
+      { "nombre": "Inglés II", "codigo": "LCE002", "prer": ["LCE001"] },
+      { "nombre": "Medio ambiente y gestión ambiental", "codigo": "CVE3317", "prer": ["CBI111"] }
+    ]
+  },
+  {
+    "nombre": "4° Semestre",
+    "ramos": [
+      { "nombre": "Emprendimiento y negocios", "codigo": "AEA240" },
+      { "nombre": "Microbiología general y veterinaria", "codigo": "CBI329", "prer": ["CBI111"] },
+      { "nombre": "Genética", "codigo": "CBI514", "prer": ["AES519"] },
+      { "nombre": "Fisiología animal", "codigo": "CVE421", "prer": ["CVE292", "CQU310"] },
+      { "nombre": "Enfermedades parasitarias", "codigo": "CVE425", "prer": ["CVE211"] }
+    ]
+  }
+];
+
+function crearMalla() {
+    const grid = document.getElementById('grid');
+    malla.forEach(semestre => {
+        const contenedor = document.createElement('div');
+        contenedor.className = 'semestre';
+        const titulo = document.createElement('h2');
+        titulo.textContent = semestre.nombre;
+        contenedor.appendChild(titulo);
+        semestre.ramos.forEach(ramo => {
+            const div = document.createElement('div');
+            div.className = 'ramo';
+            div.textContent = ramo.nombre;
+            div.dataset.codigo = ramo.codigo;
+            div.dataset.prer = JSON.stringify(ramo.prer || []);
+            div.addEventListener('click', () => {
+                if (div.classList.contains('bloqueado')) return;
+                div.classList.toggle('aprobado');
+                actualizarBloqueos();
+            });
+            contenedor.appendChild(div);
+        });
+        grid.appendChild(contenedor);
+    });
+    actualizarBloqueos();
 }
 
-h1 {
-    text-align: center;
-    margin-bottom: 20px;
+function actualizarBloqueos() {
+    const todos = document.querySelectorAll('.ramo');
+    const aprobados = new Set([...todos].filter(e => e.classList.contains('aprobado')).map(e => e.dataset.codigo));
+    todos.forEach(div => {
+        const requisitos = JSON.parse(div.dataset.prer);
+        const bloqueado = requisitos.length > 0 && !requisitos.every(r => aprobados.has(r));
+        div.classList.toggle('bloqueado', bloqueado);
+    });
 }
 
-#grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-}
-
-.semestre {
-    border: 2px solid #f8c5d2;
-    background-color: #fff0f5;
-    border-radius: 12px;
-    padding: 15px;
-    box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
-}
-
-.semestre h2 {
-    text-align: center;
-    font-size: 18px;
-    margin-bottom: 10px;
-}
-
-.ramo {
-    background-color: #fddde6;
-    padding: 8px;
-    margin: 6px 0;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: 0.3s ease;
-}
-
-.ramo.aprobado {
-    background-color: #f6a5c0;
-    text-decoration: line-through;
-    color: #666;
-}
-
-.ramo.bloqueado {
-    background-color: #ddd;
-    cursor: not-allowed;
-    color: #999;
-}
-
+window.onload = crearMalla;
